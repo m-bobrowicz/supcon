@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .sc-input {
+    @apply border rounded p-2 focus:border-blue-500;
+  }
+
+  .sc-btn-green {
+    @apply border rounded p-2 text-white outline-none bg-sky-600;
+  }
+}

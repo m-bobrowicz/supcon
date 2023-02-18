@@ -1,11 +1,42 @@
-import { Controller, Post } from '@nestjs/common';
-import { Public } from 'src/auth/is-public';
+import { Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Request, Response } from 'express';
+import { AuthService } from 'src/auth/auth.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { LocalAuthGuard } from 'src/auth/local-auth.guard';
+import { UserService } from 'src/user/user.service';
 
 @Controller()
 export class AuthController {
-  @Public()
+  @UseGuards(LocalAuthGuard)
   @Post('auth/sign-in')
-  async signIn() {
-    return;
+  async signIn(
+    @Req() req: Request,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const { token } = await this.authService.login((req as any).user);
+    response.cookie('token', token, {
+      httpOnly: true,
+      path: '/',
+      sameSite: 'none',
+      secure: true,
+    });
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('auth/who-am-i')
+  async getProfile(@Req() req: Request) {
+    const reqUser = req.user as { userId: number; username: string };
+    const user = await this.userService.findOneByUsername(reqUser.username);
+    return {
+      id: user?.id,
+      username: user?.username,
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+    };
+  }
+
+  constructor(
+    private readonly authService: AuthService,
+    private readonly userService: UserService,
+  ) {}
 }

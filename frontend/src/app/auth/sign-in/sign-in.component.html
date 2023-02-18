@@ -1,0 +1,66 @@
+<div
+  class="w-screen h-screen bg-white grid grid-flow-col justify-center items-center"
+>
+  <form [formGroup]="formGroup" (submit)="submit()">
+    <div
+      class="bg-white border rounded shadow p-8 grid grid-flow-row justify-start items-start gap-8"
+    >
+      <label class="grid grid-flow-row gap-2">
+        Username
+        <input
+          type="text"
+          class="sc-input"
+          [ngClass]="{
+            'border-red-500':
+              formGroup.get('username')?.touched &&
+              formGroup.get('username')?.invalid
+          }"
+          formControlName="username"
+        />
+
+        <div
+          [ngClass]="{
+            hidden:
+              (formGroup.get('username')?.touched &&
+                formGroup.get('username')?.invalid) == false
+          }"
+          class="text-red-500"
+        >
+          Field is required.
+        </div>
+      </label>
+      <label class="grid grid-flow-row gap-2">
+        Password
+        <input
+          type="password"
+          class="sc-input"
+          [ngClass]="{
+            'border-red-500':
+              formGroup.get('password')?.touched &&
+              formGroup.get('password')?.invalid
+          }"
+          formControlName="password"
+        />
+        <div
+          [ngClass]="{
+            hidden:
+              (formGroup.get('password')?.touched &&
+                formGroup.get('password')?.invalid) == false
+          }"
+          class="text-red-500"
+        >
+          Field is required.
+        </div>
+      </label>
+      <div class="flex justify-end items-center">
+        <button type="submit" class="self-end sc-btn-green">sign in</button>
+      </div>
+      <div
+        [ngClass]="{ hidden: !(formGroup.errors?.['wrongCredentials'] === true) }"
+        class="text-red-500"
+      >
+        Wrong credentials.
+      </div>
+    </div>
+  </form>
+</div>

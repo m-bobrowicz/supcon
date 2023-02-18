@@ -10,10 +10,22 @@ export class UserService {
     return this.userRepository.findOneBy({ username });
   }
 
-  async create(data: { username: string; password: string }): Promise<void> {
+  async create(data: {
+    username: string;
+    password: string;
+    firstName?: string;
+    lastName?: string;
+  }): Promise<void> {
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(data.password, salt);
-    await this.userRepository.save(User.of({ username: data.username, hash }));
+    await this.userRepository.save(
+      User.of({
+        username: data.username,
+        hash,
+        firstName: data.firstName,
+        lastName: data.lastName,
+      }),
+    );
   }
 
   constructor(
