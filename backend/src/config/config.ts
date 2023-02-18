@@ -14,6 +14,7 @@ export const loadConfiguration = () => {
       http: {
         host: data.http.host,
         port: data.http.port,
+        jwtSecret: data.http.jwtSecret,
       },
       database: {
         host: data.db.host,

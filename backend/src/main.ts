@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import * as cookieParser from 'cookie-parser';
 import { AppModule } from 'src/app.module';
 import { loadConfiguration } from 'src/config/config';
 import { SeederModule } from 'src/seeder/seeder.module';
@@ -21,6 +22,8 @@ async function bootstrap() {
   }
 
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
+  app.use(cookieParser());
   await app.listen(config.http.port);
 }
 bootstrap();

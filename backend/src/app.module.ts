@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
+import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/auth/auth.module';
-import { LocalAuthGuard } from 'src/auth/local-auth.guard';
+import { APP_FILTER } from '@nestjs/core';
+import { JwtModule } from '@nestjs/jwt';
+import { AuthHttpFilter } from 'src/auth/auth-http.filter';
 import { loadConfiguration } from 'src/config/config';
 import { SeederModule } from 'src/seeder/seeder.module';
 import { UserModule } from 'src/user/user.module';
@@ -23,10 +25,17 @@ const configuration = loadConfiguration();
       autoLoadEntities: true,
       synchronize: true,
     }),
+    PassportModule.register({
+      session: false,
+    }),
+    JwtModule.register({
+      secret: configuration.http.jwtSecret,
+      signOptions: { expiresIn: '7d' },
+    }),
     AuthModule,
     UserModule,
     SeederModule,
   ],
-  providers: [{ provide: APP_GUARD, useClass: LocalAuthGuard }],
+  providers: [{ provide: APP_FILTER, useClass: AuthHttpFilter }],
 })
 export class AppModule {}
