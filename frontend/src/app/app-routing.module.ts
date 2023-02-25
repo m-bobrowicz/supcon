@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 import { LayoutComponent } from 'src/app/layout/layout.component';
 import { LayoutModule } from 'src/app/layout/layout.module';
+import { UserProfileComponent } from 'src/app/user-profile/user-profile.component';
+import { UserProfileModule } from 'src/app/user-profile/user-profile.module';
 
 @NgModule({
   imports: [
@@ -10,7 +12,12 @@ import { LayoutModule } from 'src/app/layout/layout.module';
       {
         path: 'app',
         component: LayoutComponent,
-        children: [],
+        children: [
+          {
+            path: 'user-profile',
+            component: UserProfileComponent,
+          },
+        ],
         canActivate: [AuthGuard],
       },
       {
@@ -25,6 +32,7 @@ import { LayoutModule } from 'src/app/layout/layout.module';
       },
     ]),
     LayoutModule,
+    UserProfileModule,
   ],
   exports: [RouterModule],
 })
