@@ -20,7 +20,7 @@ const config = loadConfiguration();
     }),
     JwtModule.register({
       secret: config.http.jwtSecret,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '24h' },
     }),
   ],
   providers: [AuthService, JwtStrategy, LocalStrategy],

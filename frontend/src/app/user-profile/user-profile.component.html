@@ -1,1 +1,6 @@
-user profile works
+<ng-container *ngIf="user$ | async as user">
+  {{ user.firstName }}
+  {{ user.lastName }}
+</ng-container>
+
+<sc-user-info [user]="user$ | async"> </sc-user-info>
