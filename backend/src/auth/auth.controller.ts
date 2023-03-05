@@ -52,9 +52,31 @@ export class AuthController {
         sameSite: 'none',
         secure: true,
       })
-      .status(HttpStatus.NO_CONTENT)
       .json({
         statusCode: HttpStatus.UNAUTHORIZED,
+        timestamp: new Date().toISOString(),
+      });
+  }
+
+  @Post('auth/change-password')
+  async changePassword(
+    @Req() req: Request,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    await this.authService.changePassword({
+      currentPassword: req.body.currentPassword,
+      newPassword: req.body.newPassword,
+      username: req.body.username,
+    });
+    response
+      .clearCookie('token', {
+        httpOnly: true,
+        path: '/',
+        sameSite: 'none',
+        secure: true,
+      })
+      .json({
+        statusCode: HttpStatus.NO_CONTENT,
         timestamp: new Date().toISOString(),
       });
   }
