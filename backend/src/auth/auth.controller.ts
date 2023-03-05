@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpStatus,
+  Post,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
@@ -33,6 +41,22 @@ export class AuthController {
       firstName: user?.firstName,
       lastName: user?.lastName,
     };
+  }
+
+  @Post('auth/sign-out')
+  async signOut(@Res() response: Response) {
+    response
+      .clearCookie('token', {
+        httpOnly: true,
+        path: '/',
+        sameSite: 'none',
+        secure: true,
+      })
+      .status(HttpStatus.NO_CONTENT)
+      .json({
+        statusCode: HttpStatus.UNAUTHORIZED,
+        timestamp: new Date().toISOString(),
+      });
   }
 
   constructor(

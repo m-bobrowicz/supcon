@@ -15,5 +15,9 @@ export class AuthService {
       .pipe(exhaustMap(() => this.whoAmI()));
   }
 
+  signOut(){
+    return this.http.post('/api/auth/sign-out', {})
+  }
+
   constructor(private http: HttpClient) {}
 }
