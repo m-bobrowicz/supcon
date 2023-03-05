@@ -28,6 +28,21 @@ export class UserService {
     );
   }
 
+  async updatePassowrd(data: {
+    username: string;
+    password: string;
+  }): Promise<void> {
+    const salt = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(data.password, salt);
+    await this.userRepository.update(
+      { username: data.username },
+      User.of({
+        username: data.username,
+        hash,
+      }),
+    );
+  }
+
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}

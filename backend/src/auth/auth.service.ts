@@ -24,6 +24,27 @@ export class AuthService {
     };
   }
 
+  async changePassword(payload: {
+    username: string;
+    currentPassword: string;
+    newPassword: string;
+  }) {
+    const { username, currentPassword, newPassword } = payload;
+    const user = await this.usersService.findOneByUsername(username);
+    if (user == null) {
+      throw new Error('user does not exist');
+    }
+    const result = await bcrypt.compare(currentPassword, user.hash);
+    if (result) {
+      await this.usersService.updatePassowrd({
+        username,
+        password: newPassword,
+      });
+      return null;
+    }
+    throw new Error('password is incorrect');
+  }
+
   constructor(
     private jwtService: JwtService,
     private usersService: UserService,
