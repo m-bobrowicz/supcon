@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -7,7 +9,12 @@ import { AuthService } from 'src/app/auth/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserProfileComponent {
-  user$ = this.auth.whoAmI();
+  
+  user$ = this.auth.whoAmI()
 
-  constructor(private auth: AuthService) {}
+  ngOnInit() {}
+
+
+  constructor(private auth: AuthService){}
+
 }

@@ -1,5 +1,8 @@
 <div class="flex justify-start items-start gap-8">
-  <div class="bg-slate-700 w-16 h-screen">sidebar</div>
+  <div class="bg-slate-700 w-16 h-screen">
+    sidebar
+    <button class="text-green-400" (click)="signOut()">logout</button>
+  </div>
   <div class="h-screen overflow-auto text-left">
     <router-outlet></router-outlet>
   </div>
