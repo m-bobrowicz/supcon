@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { EncryptService } from 'src/user/encrypt.service';
 import { User } from 'src/user/user.entity';
 import { UserService } from 'src/user/user.service';
 
@@ -11,13 +12,13 @@ export class AuthService {
     if (user == null) {
       return null;
     }
-    if (await bcrypt.compare(password, user.hash)) {
+    if (await this.encryptService.compare(password, user.hash)) {
       return user;
     }
     return null;
   }
 
-  async login(user: User) {
+  login(user: { id: number; username: string }) {
     const payload = { username: user.username, sub: user.id };
     return {
       token: this.jwtService.sign(payload),
@@ -32,21 +33,39 @@ export class AuthService {
     const { username, currentPassword, newPassword } = payload;
     const user = await this.usersService.findOneByUsername(username);
     if (user == null) {
-      throw new Error('user does not exist');
+      throw new UserNotFoundError(username);
     }
-    const result = await bcrypt.compare(currentPassword, user.hash);
-    if (result) {
-      await this.usersService.updatePassowrd({
+    const isPasswordCorrect = await this.encryptService.compare(
+      currentPassword,
+      user.hash,
+    );
+    if (isPasswordCorrect) {
+      await this.usersService.updatePassword({
         username,
         password: newPassword,
       });
       return null;
     }
-    throw new Error('password is incorrect');
+    throw new IncorrectPasswordError();
   }
 
   constructor(
     private jwtService: JwtService,
     private usersService: UserService,
+    private encryptService: EncryptService,
   ) {}
+}
+
+export class UserNotFoundError extends Error {
+  constructor(username: string) {
+    super(`user with username ${username} not found`);
+    Object.setPrototypeOf(this, UserNotFoundError.prototype);
+  }
+}
+
+export class IncorrectPasswordError extends Error {
+  constructor() {
+    super(`password is incorrect`);
+    Object.setPrototypeOf(this, IncorrectPasswordError.prototype);
+  }
 }

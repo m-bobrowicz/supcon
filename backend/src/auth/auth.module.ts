@@ -7,6 +7,7 @@ import { AuthService } from 'src/auth/auth.service';
 import { JwtStrategy } from 'src/auth/jwt.strategy';
 import { LocalStrategy } from 'src/auth/local.strategy';
 import { loadConfiguration } from 'src/config/config';
+import { EncryptModule } from 'src/encrypt/encrypt.module';
 import { UserModule } from 'src/user/user.module';
 
 const config = loadConfiguration();
@@ -14,6 +15,7 @@ const config = loadConfiguration();
 @Module({
   imports: [
     UserModule,
+    EncryptModule,
     ConfigModule,
     PassportModule.register({
       session: true,
