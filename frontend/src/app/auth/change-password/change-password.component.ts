@@ -20,15 +20,16 @@ export class ChangePasswordComponent {
     this.resetForm();
     this.formGroup.markAllAsTouched();
 
-    if (this.formGroup.invalid) {
-      return;
-    }
 
     const value = this.formGroup.value as {
       currentPassword: string;
       newPassword: string;
       repeatPassword: string;
     };
+
+    if (this.formGroup.invalid || value.newPassword != value.repeatPassword) 
+      return;
+
 
     this.auth
       .whoAmI()
