@@ -16,6 +16,9 @@ export class LayoutComponent {
     ).subscribe()
   }
 
+  changePassword(){
+    this.router.navigateByUrl('app/change-password')
+  }
   constructor(private auth: AuthService, private router: Router){}
 
 }
