@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { loadConfiguration } from 'src/config/config';
-import { SeederService } from 'src/seeder/seeder.service';
-import { UserSeederService } from 'src/seeder/user/user-seeder.service';
+import { SeederService } from 'dev/seeder/seeder.service';
+import { UserSeederService } from 'dev/seeder/user/user-seeder.service';
 import { UserModule } from 'src/user/user.module';
 
 const configuration = loadConfiguration();
