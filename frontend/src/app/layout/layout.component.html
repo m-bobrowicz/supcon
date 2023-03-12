@@ -1,8 +1,11 @@
 <div class="flex justify-start items-start gap-8">
-  <div class="bg-slate-700 w-16 h-screen">
-    sidebar
-    <button class="text-green-400" (click)="signOut()">logout</button>
-  </div>
+  <app-layout-sidebar>
+    <ng-container bottom>
+      <button type="button" (click)="signOut()">
+        <i-feather name="log-out" class="w-2 h-2"></i-feather>
+      </button>
+    </ng-container>
+  </app-layout-sidebar>
   <div class="h-screen overflow-auto text-left">
     <router-outlet></router-outlet>
   </div>

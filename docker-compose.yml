@@ -11,6 +11,8 @@ services:
       - backend
     volumes:
       - ./backend/config:/home/node/supcon/config
+    ports:
+      - 3000:3000
 
 networks:
   backend:
