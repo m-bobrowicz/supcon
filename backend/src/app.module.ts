@@ -8,6 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { AuthHttpFilter } from 'src/auth/auth-http.filter';
 import { loadConfiguration } from 'src/config/config';
 import { UserModule } from 'src/user/user.module';
+import { ConduitDefinitionModule } from 'src/conduit/definition/definition.module';
 
 const configuration = loadConfiguration();
 
@@ -32,6 +33,7 @@ const configuration = loadConfiguration();
     }),
     AuthModule,
     UserModule,
+    ConduitDefinitionModule,
   ],
   providers: [{ provide: APP_FILTER, useClass: AuthHttpFilter }],
 })
