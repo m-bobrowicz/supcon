@@ -5,10 +5,10 @@
 
 @layer components {
   .sc-input {
-    @apply border rounded p-2 focus:border-blue-500;
+    @apply border-2 border-zinc-600 bg-transparent rounded p-2 focus:border-indigo-700 outline-none;
   }
 
-  .sc-btn-green {
-    @apply border rounded p-2 text-white outline-none bg-sky-600;
+  body {
+    @apply bg-zinc-800 text-zinc-200;
   }
 }
