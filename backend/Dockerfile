@@ -16,4 +16,5 @@ COPY --chown=node:node ./tsconfig.json ./
 COPY --chown=node:node ./nest-cli.json ./
 COPY --chown=node:node ./src ./src
 COPY --chown=node:node ./dev ./dev
+COPY --chown=node:node config.yml* .
 
