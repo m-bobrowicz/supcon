@@ -1,0 +1,32 @@
+<div class="h-full py-12 flex flex-col justify-start items-stretch gap-8">
+  <div scTableContainer class="mx-12 basis-0 grow">
+    <table cdk-table scTable [dataSource]="dataSource">
+      <ng-container cdkColumnDef="name">
+        <th cdk-header-cell scHeaderCell *cdkHeaderCellDef>Name</th>
+        <td cdk-cell scCell *cdkCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createdAt">
+        <th cdk-header-cell scHeaderCell *cdkHeaderCellDef>Created at</th>
+        <td cdk-cell scCell *cdkCellDef="let element">
+          {{ element.createdAt | scDateFormat }}
+        </td>
+      </ng-container>
+
+      <tr
+        cdk-header-row
+        scHeaderRow
+        *cdkHeaderRowDef="displayedColumns; sticky: true"
+      ></tr>
+      <tr cdk-row scRow *cdkRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <div class="px-12 flex flex-row justify-end items-center">
+    <sc-paginator
+      [totalSize]="(store.totalCount$ | async) ?? 0"
+      [currentPage]="(store.page$ | async) ?? 1"
+      [limit]="(store.limit$ | async) ?? 10"
+      (pageChange)="store.pageChange($event)"
+    ></sc-paginator>
+  </div>
+</div>

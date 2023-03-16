@@ -1,4 +1,4 @@
-<div class="flex justify-start items-start gap-8">
+<div class="flex justify-start items-start">
   <app-layout-sidebar>
     <ng-container bottom>
       <button type="button" (click)="signOut()">
@@ -6,7 +6,7 @@
       </button>
     </ng-container>
   </app-layout-sidebar>
-  <div class="h-screen overflow-auto text-left">
+  <div class="h-screen w-full overflow-auto text-left">
     <router-outlet></router-outlet>
   </div>
 </div>

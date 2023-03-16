@@ -31,7 +31,7 @@ export class SignInComponent {
       .signIn(value)
       .pipe(
         tap(() => {
-          this.router.navigateByUrl('/app/user-profile');
+          this.router.navigateByUrl('/');
         }),
         catchError((error) => {
           if (

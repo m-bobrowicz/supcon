@@ -12,16 +12,18 @@ export class ConduitDefinitionService {
   list(context: {
     page: number;
     limit: number;
+    orderBy: 'name' | 'createdAt';
+    orderDirection: 'ASC' | 'DESC';
   }): Promise<{ count: number; items: ConduitDefinition[] }> {
     const { page, limit } = context;
     const skip = (page - 1) * limit;
     const take = limit;
+    const order = {
+      [context.orderBy]: { direction: context.orderDirection, nulls: 'LAST' },
+    };
+
     return this.repository
-      .findAndCount({
-        skip,
-        take,
-        order: { name: { direction: 'ASC', nulls: 'LAST' } },
-      })
+      .findAndCount({ skip, take, order })
       .then(([items, count]) => ({ count, items }));
   }
 

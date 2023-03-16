@@ -17,6 +17,13 @@ import { UserProfileModule } from 'src/app/user-profile/user-profile.module';
             path: 'user-profile',
             component: UserProfileComponent,
           },
+          {
+            path: 'conduit-definition',
+            loadChildren: () =>
+              import(
+                'src/app/conduit-definition-list/conduit-definition-list.router-module'
+              ).then((m) => m.ConduitDefinitionListRouterModule),
+          },
         ],
         canActivate: [AuthGuard],
       },
@@ -27,8 +34,12 @@ import { UserProfileModule } from 'src/app/user-profile/user-profile.module';
       },
       {
         path: '',
-        redirectTo: 'app',
+        redirectTo: 'app/conduit-definition',
         pathMatch: 'full',
+      },
+      {
+        path: '**',
+        redirectTo: 'app/conduit-definition',
       },
     ]),
     LayoutModule,

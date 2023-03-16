@@ -45,6 +45,7 @@ describe('ConduitDefinitionController', () => {
       .send({ page: 1, limit: 10 })
       .expect(201)
       .expect((res) => {
+        console.log(JSON.stringify(res.body.items));
         expect(res.body.count).toEqual(3);
         expect(res.body.items.map((it: any) => it.name)).toEqual([
           'BrightByte',
