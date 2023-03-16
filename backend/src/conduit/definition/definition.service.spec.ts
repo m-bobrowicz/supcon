@@ -12,13 +12,8 @@ describe(ConduitDefinitionService.name, () => {
   let encrypt: { encrypt: jest.Mock };
 
   beforeEach(async () => {
-    repository = {
-      findAndCount: jest.fn(),
-      save: jest.fn(),
-    };
-    encrypt = {
-      encrypt: jest.fn(),
-    };
+    repository = { findAndCount: jest.fn(), save: jest.fn() };
+    encrypt = { encrypt: jest.fn() };
     const moduleRef: TestingModule = await Test.createTestingModule({
       providers: [
         { provide: EncryptService, useValue: encrypt },
@@ -40,6 +35,9 @@ describe(ConduitDefinitionService.name, () => {
     expect(repository.findAndCount).toHaveBeenCalledWith({
       skip: 20,
       take: 10,
+      order: {
+        name: { direction: 'ASC', nulls: 'LAST' },
+      },
     });
     expect(result).toEqual({
       count: 1,
