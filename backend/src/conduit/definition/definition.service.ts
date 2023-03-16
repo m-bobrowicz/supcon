@@ -14,10 +14,13 @@ export class ConduitDefinitionService {
     limit: number;
   }): Promise<{ count: number; items: ConduitDefinition[] }> {
     const { page, limit } = context;
+    const skip = (page - 1) * limit;
+    const take = limit;
     return this.repository
       .findAndCount({
-        skip: (page - 1) * limit,
-        take: limit,
+        skip,
+        take,
+        order: { name: { direction: 'ASC', nulls: 'LAST' } },
       })
       .then(([items, count]) => ({ count, items }));
   }
