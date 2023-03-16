@@ -10,4 +10,8 @@ export class ListConduitDefinitionsRequestDTO {
   @IsNumber()
   @Min(1)
   limit: number;
+
+  orderBy: 'name' | 'createdAt' = 'name';
+
+  orderDirection: 'ASC' | 'DESC' = 'ASC';
 }

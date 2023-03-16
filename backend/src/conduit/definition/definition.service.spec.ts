@@ -31,12 +31,17 @@ describe(ConduitDefinitionService.name, () => {
   it('should list definitions from repository', async () => {
     repository.findAndCount.mockReturnValue(Promise.resolve([[{}], 1]));
 
-    const result = await service.list({ limit: 10, page: 3 });
+    const result = await service.list({
+      limit: 10,
+      page: 3,
+      orderBy: 'createdAt',
+      orderDirection: 'DESC',
+    });
     expect(repository.findAndCount).toHaveBeenCalledWith({
       skip: 20,
       take: 10,
       order: {
-        name: { direction: 'ASC', nulls: 'LAST' },
+        createdAt: { direction: 'DESC', nulls: 'LAST' },
       },
     });
     expect(result).toEqual({
