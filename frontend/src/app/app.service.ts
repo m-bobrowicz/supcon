@@ -11,8 +11,6 @@ export class AppService {
   }
 
   finishLoading() {
-    setTimeout(() => {
-      this._isLoading$.next(false);
-    }, 4000);
+    this._isLoading$.next(false);
   }
 }
