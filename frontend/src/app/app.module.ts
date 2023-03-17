@@ -5,6 +5,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
+import { IndeterminateProgressBarModule } from 'src/app/lib/indeterminate-progress-bar/indeterminate-progress-bar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { AppComponent } from 'src/app/app.component';
     }),
     AppRoutingModule,
     HttpClientModule,
+    IndeterminateProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
