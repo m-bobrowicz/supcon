@@ -18,3 +18,4 @@ COPY --chown=node:node ./src ./src
 COPY --chown=node:node ./dev ./dev
 COPY --chown=node:node config.yml* .
 
+RUN npm run build
