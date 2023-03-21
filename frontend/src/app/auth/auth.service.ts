@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { exhaustMap, Observable } from 'rxjs';
+import { exhaustMap, Observable, switchMap, tap } from 'rxjs';
 import { User } from 'src/app/user/user';
 
 @Injectable({ providedIn: 'root' })
@@ -15,8 +15,16 @@ export class AuthService {
       .pipe(exhaustMap(() => this.whoAmI()));
   }
 
-  signOut(){
-    return this.http.post('/api/auth/sign-out', {})
+  signOut() {
+    return this.http.post('/api/auth/sign-out', {});
+  }
+
+  changePassword(data: {
+    currentPassword: string;
+    newPassword: string;
+    username: string;
+  }) {
+    return this.http.post('/api/auth/change-password', data);
   }
 
   constructor(private http: HttpClient) {}

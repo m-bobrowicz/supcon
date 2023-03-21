@@ -5,6 +5,8 @@ import { LayoutComponent } from 'src/app/layout/layout.component';
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { UserProfileComponent } from 'src/app/user-profile/user-profile.component';
 import { UserProfileModule } from 'src/app/user-profile/user-profile.module';
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import { ChangePasswordModule } from './auth/change-password/change-password.module';
 
 @NgModule({
   imports: [
@@ -28,6 +30,11 @@ import { UserProfileModule } from 'src/app/user-profile/user-profile.module';
         canActivate: [AuthGuard],
       },
       {
+        path: 'app/change-password',
+        component: ChangePasswordComponent,
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'auth',
         loadChildren: () =>
           import('src/app/auth/auth.module').then((m) => m.AuthModule),
@@ -44,6 +51,7 @@ import { UserProfileModule } from 'src/app/user-profile/user-profile.module';
     ]),
     LayoutModule,
     UserProfileModule,
+    ChangePasswordModule
   ],
   exports: [RouterModule],
 })
