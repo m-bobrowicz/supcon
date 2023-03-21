@@ -15,13 +15,16 @@ export class AuthService {
       .pipe(exhaustMap(() => this.whoAmI()));
   }
 
-  signOut(){
-    return this.http.post('/api/auth/sign-out', {})
+  signOut() {
+    return this.http.post('/api/auth/sign-out', {});
   }
 
-  changePassword(data: {currentPassword: string; newPassword: string; username: string}){
-    
-    return this.http.post('/api/auth/change-password', data).pipe(switchMap(() => this.signIn({username: data.username, password: data.newPassword})))
+  changePassword(data: {
+    currentPassword: string;
+    newPassword: string;
+    username: string;
+  }) {
+    return this.http.post('/api/auth/change-password', data);
   }
 
   constructor(private http: HttpClient) {}

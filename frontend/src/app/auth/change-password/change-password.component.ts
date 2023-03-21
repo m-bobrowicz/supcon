@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, switchMap } from 'rxjs';
+import { catchError, switchMap, tap } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -20,16 +20,14 @@ export class ChangePasswordComponent {
     this.resetForm();
     this.formGroup.markAllAsTouched();
 
-
     const value = this.formGroup.value as {
       currentPassword: string;
       newPassword: string;
       repeatPassword: string;
     };
 
-    if (this.formGroup.invalid || value.newPassword != value.repeatPassword) 
+    if (this.formGroup.invalid || value.newPassword != value.repeatPassword)
       return;
-
 
     this.auth
       .whoAmI()
@@ -38,6 +36,8 @@ export class ChangePasswordComponent {
           return this.auth
             .changePassword({ ...value, username: user.username })
             .pipe(
+              tap(() => this.auth.signIn({username: user.username, password: value.newPassword})),
+              tap(() => this.router.navigateByUrl('app/user-profile')),
               catchError((error) => {
                 if (
                   error instanceof HttpErrorResponse &&
@@ -50,7 +50,7 @@ export class ChangePasswordComponent {
             );
         })
       )
-      .subscribe(() => this.router.navigateByUrl('app/user-profile'));
+      .subscribe();
   }
 
   ngOnInit() {
