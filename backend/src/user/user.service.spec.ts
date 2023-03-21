@@ -13,7 +13,7 @@ describe(UserService.name, () => {
 
   beforeEach(async () => {
     users = {
-      A: { id: 1, username: 'A' } as User,
+      A: { id: '1', username: 'A' } as User,
     };
     repository = {
       findOneBy: jest.fn(),

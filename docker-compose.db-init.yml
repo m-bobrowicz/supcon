@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db_init:
+    working_dir: /home/node/supcon
+    image: supcon_backend
+    command: npm run db:init
+    depends_on:
+      - postgres
+    networks:
+      - backend
+    volumes:
+      - ./backend/config:/home/node/supcon/config
+
+networks:
+  backend:

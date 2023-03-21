@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'scuser' })
+@Entity({ name: 'sc_user' })
 export class User {
   public static of(data: {
     username: string;
@@ -16,8 +16,8 @@ export class User {
     return user;
   }
 
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ unique: true })
   username: string;

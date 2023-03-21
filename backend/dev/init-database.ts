@@ -1,15 +1,14 @@
 import { Module } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { loadConfiguration } from 'src/config/config';
-import { SeederService } from 'src/seeder/seeder.service';
-import { UserSeederService } from 'src/seeder/user/user-seeder.service';
-import { UserModule } from 'src/user/user.module';
+import { SeederModule } from 'dev/seeder/seeder.module';
+import { SeederService } from 'dev/seeder/seeder.service';
 
 const configuration = loadConfiguration();
 
 @Module({
   imports: [
-    UserModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: configuration.database.host,
@@ -18,10 +17,20 @@ const configuration = loadConfiguration();
       password: configuration.database.password,
       database: configuration.database.dbName,
       autoLoadEntities: true,
-      synchronize: false,
+      synchronize: true,
+      dropSchema: true,
     }),
+    SeederModule,
   ],
-  providers: [SeederService, UserSeederService],
-  exports: [SeederService],
 })
-export class SeederModule {}
+export class InitDatabaseModule {}
+
+async function bootstrap() {
+  if (configuration.isDev === false) {
+    return;
+  }
+  const app = await NestFactory.createApplicationContext(InitDatabaseModule);
+  await app.get(SeederService).seed();
+  await app.close();
+}
+bootstrap();

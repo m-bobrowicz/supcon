@@ -1,9 +1,13 @@
-<div class="flex justify-start items-start gap-8">
-  <div class="bg-slate-700 w-1/12 h-screen grid-flow-col row-span-1">
-    <button class="text-green-400" (click)="signOut()">Log Out</button>
-    <a [routerLink]="['/app/change-password']"><button class="text-yellow-400">Change Password</button></a>
-  </div>
-  <div class="h-screen overflow-auto text-left">
+<div class="flex justify-start items-start">
+  <app-layout-sidebar>
+    <ng-container bottom>
+      <button type="button" (click)="signOut()">
+        <i-feather name="log-out" class="w-2 h-2"></i-feather>
+      </button>
+      <a [routerLink]="['/app/change-password']"><button class="text-yellow-400">Change Password</button></a>
+    </ng-container>
+  </app-layout-sidebar>
+  <div class="h-screen w-full overflow-auto text-left">
     <router-outlet></router-outlet>
   </div>
 </div>

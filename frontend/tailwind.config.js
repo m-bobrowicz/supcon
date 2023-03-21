@@ -2,7 +2,28 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: "Inter;",
+      },
+      animation: {
+        "indeterminate-progress":
+          "indeterminate-progress 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite",
+        "indeterminate-progress-short":
+          "indeterminate-progress-short 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite",
+      },
+      keyframes: {
+        "indeterminate-progress": {
+          "100%": { left: "-35%", right: "100%" },
+          "60%": { left: "100%", right: "-90%" },
+          "0%": { left: "100%", right: "-90%" },
+        },
+        "indeterminate-progress-short": {
+          "100%": { left: "-200%", right: "100%" },
+          "60%": { left: "107%", right: "-8%" },
+          "0%": { left: "107%", right: "-8%" },
+        },
+      },
+    },
   },
-  plugins: [],
 };

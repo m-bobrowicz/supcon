@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -6,19 +6,15 @@ import { AuthService } from 'src/app/auth/auth.service';
 @Component({
   selector: 'sc-layout',
   templateUrl: './layout.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
-
-
-  signOut(){
-    this.auth.signOut().pipe(
-      tap(() => this.router.navigateByUrl('/auth/sign-in'))
-    ).subscribe()
+  signOut() {
+    this.auth
+      .signOut()
+      .pipe(tap(() => this.router.navigateByUrl('/auth/sign-in')))
+      .subscribe();
   }
 
-  changePassword(){
-    this.router.navigateByUrl('app/change-password')
-  }
-  constructor(private auth: AuthService, private router: Router){}
-
+  constructor(private auth: AuthService, private router: Router) {}
 }

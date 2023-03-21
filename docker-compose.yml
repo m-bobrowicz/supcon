@@ -1,16 +1,18 @@
 version: '3'
 
 services:
-  postgres:
-    image: postgres:15.2
-    ports:
-      - "127.0.0.1:5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=supcondev
-      - POSTGRES_USER=supcondev
-      - POSTGRES_DB=supcondev
+  backend:
+    working_dir: /home/node/supcon
+    image: supcon_backend
+    command: npm run start
+    depends_on:
+      - postgres
+    networks:
+      - backend
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - ./backend/config:/home/node/supcon/config
+    ports:
+      - 3000:3000
 
-volumes:
-  postgres-data:
+networks:
+  backend:

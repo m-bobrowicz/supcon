@@ -7,8 +7,8 @@ import { APP_FILTER } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthHttpFilter } from 'src/auth/auth-http.filter';
 import { loadConfiguration } from 'src/config/config';
-import { SeederModule } from 'src/seeder/seeder.module';
 import { UserModule } from 'src/user/user.module';
+import { ConduitDefinitionModule } from 'src/conduit/definition/definition.module';
 
 const configuration = loadConfiguration();
 
@@ -23,18 +23,17 @@ const configuration = loadConfiguration();
       password: configuration.database.password,
       database: configuration.database.dbName,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
+      dropSchema: false,
     }),
-    PassportModule.register({
-      session: false,
-    }),
+    PassportModule.register({ session: false }),
     JwtModule.register({
       secret: configuration.http.jwtSecret,
       signOptions: { expiresIn: '7d' },
     }),
     AuthModule,
     UserModule,
-    SeederModule,
+    ConduitDefinitionModule,
   ],
   providers: [{ provide: APP_FILTER, useClass: AuthHttpFilter }],
 })
