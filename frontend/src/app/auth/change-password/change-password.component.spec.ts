@@ -30,6 +30,7 @@ describe(ChangePasswordComponent.name, () => {
   it('should not call http if form is invalid', () => {
     authService.whoAmI = jest.fn().mockReturnValue(of({ username: '' }));
     authService.changePassword = jest.fn().mockReturnValue(of(null));
+    authService.signIn = jest.fn().mockReturnValue(of(null));
     router.navigateByUrl = jest.fn();
 
     spectator.click('[data-change-password-submit]');
@@ -75,6 +76,7 @@ describe(ChangePasswordComponent.name, () => {
 
   it('should handle http error correctly', () => {
     authService.whoAmI = jest.fn().mockReturnValue(of({ username: '' }));
+    authService.signIn = jest.fn().mockReturnValue(of(null));
     authService.changePassword = jest.fn().mockImplementation(() =>
       throwError(
         () =>
