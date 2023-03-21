@@ -36,7 +36,12 @@ export class ChangePasswordComponent {
           return this.auth
             .changePassword({ ...value, username: user.username })
             .pipe(
-              tap(() => this.auth.signIn({username: user.username, password: value.newPassword})),
+              tap(() =>
+                this.auth.signIn({
+                  username: user.username,
+                  password: value.newPassword,
+                })
+              ),
               tap(() => this.router.navigateByUrl('app/user-profile')),
               catchError((error) => {
                 if (

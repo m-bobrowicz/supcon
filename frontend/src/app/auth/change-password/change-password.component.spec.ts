@@ -54,6 +54,7 @@ describe(ChangePasswordComponent.name, () => {
 
   it('should call http if form is valid', () => {
     authService.whoAmI = jest.fn().mockReturnValue(of({ username: '' }));
+    authService.signIn = jest.fn().mockReturnValue(of(null));
     authService.changePassword = jest.fn().mockReturnValue(of(null));
     router.navigateByUrl = jest.fn();
 
