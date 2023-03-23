@@ -1,0 +1,100 @@
+Product Name,Category,Brand,Price,Availability,Color,Weight,Dimensions,Material
+iPhone 13,Electronics,Apple,999,In Stock,Black,174 g,146.7 x 71.5 x 7.65 mm,"Glass and Ceramic Shield front, Ceramic Shield back, stainless steel frame"
+Samsung Galaxy S21,Electronics,Samsung,799,In Stock,Phantom Gray,171 g,151.7 x 71.2 x 7.9 mm,"Gorilla Glass Victus front and back, aluminum frame"
+Sony WH-1000XM4,Electronics,Sony,349,In Stock,Black,254 g,7.27 x 9.94 x 3.03 inches,Plastic and Metal
+Bose QuietComfort 35 II,Electronics,Bose,299,In Stock,Black,235 g,3.2 x 6.7 x 7.1 inches,Plastic
+MacBook Pro M1,Electronics,Apple,1299,Out of Stock,Space Gray,1.4 kg,304.1 x 212.4 x 15.6 mm,Aluminum
+Lenovo ThinkPad X1 Carbon,Electronics,Lenovo,1199,In Stock,Black,1.09 kg,323 x 217 x 14.95 mm,Carbon fiber reinforced plastic
+Dell XPS 13,Electronics,Dell,1099,In Stock,Platinum Silver,1.2 kg,296 x 199 x 14.8 mm,Aluminum
+Asus ZenBook Pro Duo,Electronics,Asus,2499,In Stock,Celestial Blue,2.5 kg,359 x 246 x 24 mm,Aluminum alloy
+HP Spectre x360,Electronics,HP,1199,In Stock,Nightfall Black,1.27 kg,306.5 x 194.6 x 16.9 mm,Aluminum
+LG OLED CX,Electronics,LG,1999,In Stock,Black,27.8 kg,1228 x 706 x 47 mm,"Metal, Plastic"
+Nike Air Zoom Pegasus 38,Clothing,Nike,120,In Stock,Black/White/Anthracite,286 g,N/A,"Mesh and synthetic upper, Rubber sole"
+Adidas Ultra Boost 21,Clothing,Adidas,180,In Stock,Core Black/Scarlet/Solar Red,309 g,N/A,"Textile and synthetic upper, Rubber sole"
+Under Armour HOVR Phantom 2,Clothing,Under Armour,140,In Stock,Black/White/White,292 g,N/A,"Textile and synthetic upper, Rubber sole"
+New Balance Fresh Foam 1080v11,Clothing,New Balance,150,In Stock,Black/Magnet,285 g,N/A,"Mesh and synthetic upper, Rubber sole"
+Lululemon Align Pant II,Clothing,Lululemon,98,In Stock,Black,212 g,N/A,Nulu fabric
+Patagonia Better Sweater,Clothing,Patagonia,139,In Stock,Navy Blue,499 g,N/A,Polyester fleece
+The North Face Denali Jacket,Clothing,The North Face,179,In Stock,Black,800 g,N/A,Recycled polyester fleece
+Columbia Benton Springs Fleece Jacket,Clothing,Columbia,60,In Stock,Charcoal Heather,454 g,N/A,Polyester MTR filament fleece
+Levi's 501 Original Fit Jeans,Clothing,Levi's,69,In Stock,Black,750 g,N/A,Cotton
+Wrangler Authentics Men's Classic Straight Leg Jeans,Clothing,Wrangler,25,In Stock,Dark Indigo,680 g,N/A,Cotton
+Calvin Klein Boxer Briefs,Clothing,Calvin Klein,30,In Stock,Black,90 g,N/A,Cotton and elastane
+Hanes ComfortBlend Crewneck T-Shirt,Clothing,Hanes,10,In Stock,White,200 g,N/A,Cotton and polyester
+Ralph Lauren Polo Shirt,Clothing,Ralph Lauren,98,In Stock,White,220 g,N/A,Cotton
+Tommy Hilfiger Men's Dress Shirt,Clothing,Tommy Hilfiger,65,In Stock,Blue,170 g,N/A,Cotton
+UGG Classic Mini II Boots,Footwear,UGG,150,In Stock,Chestnut,1.3 kg,N/A,"Suede upper, Sheepskin lining and insole, Treadlite by UGG outsole"
+Timberland 6-Inch Premium Waterproof Boots,Footwear,Timberland,198,In Stock,Wheat Nubuck,1.1 kg,N/A,"Nubuck leather upper, Rubber lug outsole"
+Dr. Martens 1460 Smooth Boots,Footwear,Dr. Martens,150,In Stock,Black,1.2 kg,N/A,"Leather upper, Rubber sole"
+Nike Air Force 1 '07,Footwear,Nike,90,In Stock,White/White,470 g,N/A,"Leather upper, Rubber sole"
+Adidas Originals Superstar Shoes,Footwear,Adidas,80,In Stock,White/Core Black/White,570 g,N/A,"Leather upper, Rubber shell toe and outsole"
+Vans Old Skool Skate Shoes,Footwear,Vans,60,In Stock,Black/White,500 g,N/A,"Suede and canvas upper, Rubber sole"
+Converse Chuck Taylor All Star Low Top,Footwear,Converse,55,In Stock,Optical White,430 g,N/A,"Canvas upper, Rubber sole"
+Crocs Classic Clogs,Footwear,Crocs,45,In Stock,Black,400 g,N/A,Croslite foam
+Birkenstock Arizona Sandals,Footwear,Birkenstock,125,In Stock,Black,930 g,N/A,"Birko-Flor upper, Cork and latex footbed, EVA sole"
+Reef Fanning Sandals,Footwear,Reef,60,In Stock,Brown/Gum,380 g,N/A,"Synthetic nubuck upper, Rubber sole"
+Ray-Ban Classic Wayfarer Sunglasses,Accessories,Ray-Ban,154,In Stock,Black/Green,45 g,50-22-140 mm,"Acetate and Metal frame, Crystal lenses"
+Oakley Holbrook Sunglasses,Accessories,Oakley,126,In Stock,Matte Black/Prizm Black,27 g,55-18-137 mm,"O-Matter frame, Plutonite lenses"
+Gucci GG Marmont Card Holder,Accessories,Gucci,270,In Stock,Black,50 g,10 x 7 cm,Matelassé leather
+Louis Vuitton Pocket Organizer,Accessories,Louis Vuitton,355,In Stock,Monogram,60 g,8 x 11 cm,Coated canvas and leather
+Montblanc Meisterstück Classique Fountain Pen,Accessories,Montblanc,465,In Stock,Black,26 g,N/A,"Resin barrel and cap, Gold nib"
+Parker Jotter Ballpoint Pen,Accessories,Parker,15,In Stock,Red,10 g,N/A,"Stainless steel barrel and cap, Quinkflow ink"
+Apple AirPods Pro,Electronics,Apple,249,In Stock,White,45 g,N/A,"Plastic case, Silicone ear tips"
+Samsung Galaxy S21 Ultra 5G,Electronics,Samsung,1199,In Stock,Phantom Black,227 g,6.8 inches,"Dynamic AMOLED 2X jisplay, 5000 mAh battery"
+Sony WH-1000XM4 Wireless Headphones,Electronics,Sony,349,In Stock,Black,255 g,N/A,"Over-ear headphones, Bluetooth"
+Bose QuietComfort Earbuds,Electronics,Bose,279,In Stock,Triple Black,15 g,N/A,"Earbuds, Bluetooth"
+Amazon Echo Dot (4th Generation),Electronics,Amazon,49,In Stock,Charcoal,328 g,N/A,"Voice-controlled smart speaker, Alexa voice assistant"
+Nintendo Switch Console,Electronics,Nintendo,299,In Stock,Neon Blue/Neon Red,297 g,N/A,"Handheld and docked console, 6.2 inch touch screen"
+Logitech MX Master 3 Wireless Mouse,Electronics,Logitech,99,In Stock,Black,141 g,N/A,"Wireless mouse, USB-C charging"
+Canon EOS R6 Mirrorless Camera,Electronics,Canon,2499,In Stock,Black,680 g,N/A,"Full-frame mirrorless camera, 20.1 MP sensor"
+GoPro HERO9 Black,Electronics,GoPro,449,In Stock,Black,158 g,N/A,"Action camera, 5K video resolution"
+DJI Mavic Air 2 Drone,Electronics,DJI,799,In Stock,Grey,570 g,N/A,"Quadcopter drone, 4K video resolution"
+Sony PlayStation 5 Console,Electronics,Sony,499,In Stock,Black/White,4.5 kg,N/A,"Game console, 4K gaming"
+Xbox Series X Console,Electronics,Microsoft,499,In Stock,Black,4.4 kg,N/A,"Game console, 4K gaming"
+LEGO Star Wars Millennium Falcon Toy,Toys and Games,LEGO,159.99,In Stock,NA,1.41 kg,N/A,Star Wars building toy
+Barbie Dreamhouse Dollhouse with Pool,Toys and Games,Barbie,199.99,In Stock,Pink,13.8 kg,N/A,Dollhouse with furniture and accessories
+Nerf N-Strike Elite Disruptor Blaster,Toys and Games,Nerf,12.99,In Stock,Blue,426 g,N/A,"Toy blaster, 6-dart rotating drum"
+Hot Wheels Criss Cross Crash Track Set,Toys and Games,Hot Wheels,49.99,In Stock,Orange,2.05 kg,N/A,Toy car track set
+Fisher-Price Think & Learn Code-a-Pillar,Toys and Games,Fisher-Price,34.99,In Stock,Multicolor,907 g,N/A,Toy coding caterpillar
+Melissa & Doug Wooden Building Blocks Set,Toys and Games,Melissa & Doug,69.99,In Stock,Multicolor,2.03 kg,N/A,Wooden building blocks set
+Rubik's Cube Classic Puzzle Game,Toys and Games,Rubik's,9.99,In Stock,Multicolor,90 g,N/A,3x3 cube puzzle
+Monopoly Classic Board Game,Toys and Games,Monopoly,19.99,In Stock,Multicolor,1.06 kg,N/A,Board game
+Catan Board Game,Toys and Games,Catan Studio,44.99,In Stock,Multicolor,907 g,N/A,Board game
+Ticket to Ride Board Game,Toys and Games,Days of Wonder,54.99,In Stock,Multicolor,1.36 kg,N/A,Board game
+Gloomhaven Board Game,Toys and Games,Cephalofair Games,140.99,In Stock,NA,10.9 kg,N/A,Strategy board game
+Exploding Kittens Card Game,Toys and Games,Exploding Kittens,19.99,In Stock,Multicolor,204 g,N/A,Card game
+Cards Against Humanity Card Game,Toys and Games,Cards Against Humanity LLC,25,In Stock,Multicolor,998 g,N/A,Adult party game
+Kan Jam Ultimate Disc Game,Toys and Games,Kan Jam LLC,39.99,In Stock,Multicolor,2.27 kg,N/A,Outdoor disc game
+Nerf Rival Prometheus MXVIII-20K Blaster,Toys and Games,Nerf,199.99,In Stock,Multicolor,4.54 kg,N/A,"Toy blaster, 200 round hopper"
+Pandemic Board Game,Toys and Games,Z-Man Games,44.99,In Stock,Multicolor,862 g,N/A,Cooperative board game
+Carcassonne Board Game,Toys and Games,Z-Man Games,34.99,In Stock,Multicolor,816 g,N/A,Tile-laying board game
+Lego Creator Expert Taj Mahal Building Kit,Toys and Games,LEGO,369.99,In Stock,Multicolor,5.24 kg,N/A,Lego building kit
+Harry Potter Hogwarts Great Hall Building Kit,Toys and Games,LEGO,99.99,In Stock,Multicolor,1.22 kg,N/A,Lego building kit
+Fisher-Price Little People Big Helpers Home,Toys and Games,Fisher-Price,39.99,In Stock,NA,1.25 kg,N/A,Toy house playset
+Melissa & Doug Let's Play House Dust! Sweep! Mop! Set,Toys and Games,Melissa & Doug,29.99,In Stock,Multicolor,907 g,N/A,Pretend play cleaning set
+Barbie Dreamtopia Rainbow Magic Mermaid Doll,Toys and Games,Barbie,19.99,In Stock,Multicolor,113 g,N/A,Mermaid doll
+Little Tikes Cozy Coupe Ride-On,Toys and Games,Little Tikes,54.99,In Stock,Red,7.26 kg,N/A,Ride-on toy car
+Nerf N-Strike Elite Trilogy DS-15 Toy Blaster,Toys and Games,Nerf,34.99,In Stock,Multicolor,1.59 kg,N/A,Toy blaster
+Hot Wheels Track Builder System Race Crate,Toys and Games,Hot Wheels,49.99,In Stock,Orange,3.71 kg,N/A,Toy car track builder
+Green Toys Ferry Boat with Mini Cars Bathtub Toy,Toys and Games,Green Toys,19.99,In Stock,Blue,399 g,N/A,Bath toy
+PLAYMOBIL Mars Space Station,Toys and Games,PLAYMOBIL,79.99,In Stock,Multicolor,1.61 kg,N/A,Space-themed playset
+VTech Sit-to-Stand Learning Walker,Toys and Games,VTech,34.99,In Stock,Multicolor,2.77 kg,N/A,Baby walker and learning toy
+LEGO Classic Creative Bricks Set,Toys and Games,LEGO,15.99,In Stock,Multicolor,498 g,N/A,Lego building set
+Fisher-Price Laugh & Learn Smart Stages Chair,Toys and Games,Fisher-Price,34.99,In Stock,Multicolor,2.27 kg,N/A,Baby learning chair
+Radio Flyer 3-in-1 EZ Fold Wagon,Toys and Games,Radio Flyer,109.99,In Stock,Red,11.8 kg,N/A,Foldable wagon for kids
+Razor A Kick Scooter,Toys and Games,Razor,34.99,In Stock,Blue,2.72 kg,N/A,Kick scooter for kids
+Melissa & Doug Deluxe Wooden Multi-Activity Table,Toys and Games,Melissa & Doug,159.99,In Stock,Multicolor,20.9 kg,N/A,Activity table for kids
+Little Tikes First Slide,Toys and Games,Little Tikes,34.99,In Stock,Blue and Green,3.63 kg,N/A,Kids slide
+Marvel Avengers Titan Hero Series Action Figures,Toys and Games,Marvel,19.99,In Stock,Multicolor,476 g,N/A,Action figures
+Transformers Generations War for Cybertron Trilogy Figure,Toys and Games,Transformers,29.99,In Stock,Multicolor,340 g,N/A,Action figure
+Baby Einstein Take Along Tunes Musical Toy,Toys and Games,Baby Einstein,8.99,In Stock,Multicolor,91 g,N/A,Baby musical toy
+Fisher-Price Think & Learn Code-a-pillar Twist,Toys and Games,Fisher-Price,39.99,In Stock,Multicolor,1.59 kg,N/A,Toy caterpillar for learning to code
+VTech Drop and Go Dump Truck,Toys and Games,VTech,14.99,In Stock,Yellow,739 g,N/A,Baby toy dump truck
+Crayola Inspiration Art Case Coloring Set,Toys and Games,Crayola,19.99,In Stock,Multicolor,1.27 kg,N/A,Art supplies set
+LEGO Disney Frozen II Elsa's Jewelry Box Creation Building Kit,Toys and Games,LEGO,39.99,In Stock,Multicolor,581 g,N/A,Lego building kit
+Fisher-Price Linkimals Smooth Moves Sloth,Toys and Games,Fisher-Price,29.99,In Stock,Multicolor,771 g,N/A,Baby sloth toy with music and lights
+"Barbie Dreamhouse Dollhouse with Pool, Slide, and Elevator",Toys and Games,Barbie,199.99,In Stock,Multicolor,15.3 kg,N/A,Dollhouse playset
+Fisher-Price Rock-a-Stack and Baby's First Blocks Bundle,Toys and Games,Fisher-Price,14.99,In Stock,Multicolor,522 g,N/A,Baby toy bundle
+LEGO City Passenger Airplane Building Kit,Toys and Games,LEGO,129.99,In Stock,Multicolor,2.6 kg,N/A,Lego building kit
+Disney Princess Dress Up Trunk Deluxe 21-Piece,Toys and Games,Disney,34.99,In Stock,Multicolor,1.36 kg,N/A,Dress up trunk set
+Hatchimals Pixies Crystal Flyers Pink Magical Flying Pixie Toy,Toys and Games,Hatchimals,29.99,In Stock,Pink,204 g,N/A,Flying pixie toy
