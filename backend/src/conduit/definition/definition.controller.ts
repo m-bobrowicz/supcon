@@ -10,13 +10,12 @@ export class ConduitDefinitionController {
   async listConduitDefinitions(
     @Body() request: ListConduitDefinitionsRequestDTO,
   ) {
-    const result = await this.conduitDefinitionService.list({
+    return this.conduitDefinitionService.list({
       limit: request.limit,
       page: request.page,
       orderBy: request.orderBy ?? 'name',
       orderDirection: request.orderDirection ?? 'ASC',
     });
-    return result;
   }
 
   constructor(private conduitDefinitionService: ConduitDefinitionService) {}
