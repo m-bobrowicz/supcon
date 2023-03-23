@@ -1,2 +1,3 @@
 FROM nginx
-COPY ./bright-byte.csv /usr/share/nginx/html/sources/
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./bright-byte.csv /app/static/sources/
