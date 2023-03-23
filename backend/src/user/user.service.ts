@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EncryptService } from 'src/user/encrypt.service';
+import { EncryptService } from 'src/encrypt/encrypt.service';
 import { User } from 'src/user/user.entity';
 import { Repository } from 'typeorm';
 

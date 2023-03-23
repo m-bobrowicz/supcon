@@ -1,5 +1,6 @@
+/* istanbul ignore file */
 import { Module } from '@nestjs/common';
-import { EncryptService } from 'src/user/encrypt.service';
+import { EncryptService } from 'src/encrypt/encrypt.service';
 
 @Module({
   providers: [EncryptService],

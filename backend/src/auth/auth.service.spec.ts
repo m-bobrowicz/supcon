@@ -7,7 +7,7 @@ import {
   IncorrectPasswordError,
   UserNotFoundError,
 } from 'src/auth/auth.service';
-import { EncryptService } from 'src/user/encrypt.service';
+import { EncryptService } from 'src/encrypt/encrypt.service';
 import { UserService } from 'src/user/user.service';
 
 describe(AuthService.name, () => {

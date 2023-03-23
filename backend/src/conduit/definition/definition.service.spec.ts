@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { ConduitDefinition } from 'src/conduit/definition/definition.entity';
 import { ConduitDefinitionService } from 'src/conduit/definition/definition.service';
-import { EncryptService } from 'src/user/encrypt.service';
+import { EncryptService } from 'src/encrypt/encrypt.service';
 import { User } from 'src/user/user.entity';
 
 describe(ConduitDefinitionService.name, () => {
