@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { loadConfiguration } from 'src/config/config';
@@ -26,10 +26,11 @@ const configuration = loadConfiguration();
 export class InitDatabaseModule {}
 
 async function bootstrap() {
+  const app = await NestFactory.createApplicationContext(InitDatabaseModule);
   if (configuration.isDev === false) {
+    await app.get(Logger).log('app is not in dev mode, skipping');
     return;
   }
-  const app = await NestFactory.createApplicationContext(InitDatabaseModule);
   await app.get(SeederService).seed();
   await app.close();
 }

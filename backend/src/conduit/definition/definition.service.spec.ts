@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { ConduitDefinition } from 'src/conduit/definition/definition.entity';
 import { ConduitDefinitionService } from 'src/conduit/definition/definition.service';
+import { FormatType } from 'src/conduit/source/fomat-type';
+import { ProtocolType } from 'src/conduit/source/protocol-type';
 import { EncryptService } from 'src/encrypt/encrypt.service';
 import { User } from 'src/user/user.entity';
 
@@ -57,6 +59,13 @@ describe(ConduitDefinitionService.name, () => {
       name: 'someConduitDefinition',
       author: {} as User,
       createdAt: new Date(),
+      source: {
+        formatConfig: { formatType: FormatType.CSV },
+        protocolConfig: {
+          protocolType: ProtocolType.HTTP,
+          url: 'https://supcon-http.onrender.com/sources/csv/sym-tech.csv',
+        },
+      },
     });
 
     await service.create(conduitDefinition);
