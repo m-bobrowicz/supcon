@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ConduitDefinition } from 'src/conduit/definition/definition.entity';
 import { ConduitDefinitionService } from 'src/conduit/definition/definition.service';
+import { FormatType } from 'src/conduit/source/fomat-type';
+import { ProtocolType } from 'src/conduit/source/protocol-type';
 import { UserService } from 'src/user/user.service';
 
 @Injectable()
@@ -15,6 +17,13 @@ export class ConduitDefinitionSeederService {
         author: admin,
         name: 'BrightByte',
         createdAt: new Date(),
+        source: {
+          formatConfig: { formatType: FormatType.CSV },
+          protocolConfig: {
+            protocolType: ProtocolType.HTTP,
+            url: '',
+          },
+        },
       }),
     );
     await this.conduitDefinitionService.create(
