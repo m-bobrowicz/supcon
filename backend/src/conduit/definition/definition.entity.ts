@@ -8,12 +8,13 @@ export class ConduitDefinition {
     name: string;
     author: User;
     createdAt: Date;
-    source?: ConduitSource;
+    source: ConduitSource;
   }) {
     const conduitDefinition = new ConduitDefinition();
     conduitDefinition.author = data.author;
     conduitDefinition.name = data.name;
     conduitDefinition.createdAt = data.createdAt;
+    conduitDefinition.source = data.source;
     return conduitDefinition;
   }
 

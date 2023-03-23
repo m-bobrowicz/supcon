@@ -21,7 +21,7 @@ export class ConduitDefinitionSeederService {
           formatConfig: { formatType: FormatType.CSV },
           protocolConfig: {
             protocolType: ProtocolType.HTTP,
-            url: '',
+            url: 'https://supcon-http.onrender.com/sources/csv/bright-byte.csv',
           },
         },
       }),
@@ -31,6 +31,13 @@ export class ConduitDefinitionSeederService {
         author: admin,
         name: 'SymTech',
         createdAt: new Date(),
+        source: {
+          formatConfig: { formatType: FormatType.CSV },
+          protocolConfig: {
+            protocolType: ProtocolType.HTTP,
+            url: 'https://supcon-http.onrender.com/sources/csv/sym-tech.csv',
+          },
+        },
       }),
     );
     await this.conduitDefinitionService.create(
@@ -38,6 +45,13 @@ export class ConduitDefinitionSeederService {
         author: admin,
         name: 'Exertus',
         createdAt: new Date(),
+        source: {
+          formatConfig: { formatType: FormatType.CSV },
+          protocolConfig: {
+            protocolType: ProtocolType.HTTP,
+            url: 'https://supcon-http.onrender.com/sources/csv/exertus.csv',
+          },
+        },
       }),
     );
   }
