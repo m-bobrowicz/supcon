@@ -8,52 +8,41 @@ import { UserService } from 'src/user/user.service';
 @Injectable()
 export class ConduitDefinitionSeederService {
   async create(): Promise<void> {
-    const admin = await this.userService.findOneByUsername('admin');
-    if (admin == null) {
-      throw new Error('user admin was not found');
-    }
-    await this.conduitDefinitionService.create(
-      ConduitDefinition.of({
-        author: admin,
+    const author = await this.userService.findOneByUsername('admin');
+
+    await [
+      {
         name: 'BrightByte',
-        createdAt: new Date(),
-        source: {
-          formatConfig: { formatType: FormatType.CSV },
-          protocolConfig: {
-            protocolType: ProtocolType.HTTP,
-            url: 'https://supcon-http.onrender.com/sources/csv/bright-byte.csv',
-          },
-        },
-      }),
-    );
-    await this.conduitDefinitionService.create(
-      ConduitDefinition.of({
-        author: admin,
+        url: 'https://supcon-http.onrender.com/sources/csv/bright-byte.csv',
+      },
+      {
         name: 'SymTech',
-        createdAt: new Date(),
-        source: {
-          formatConfig: { formatType: FormatType.CSV },
-          protocolConfig: {
-            protocolType: ProtocolType.HTTP,
-            url: 'https://supcon-http.onrender.com/sources/csv/sym-tech.csv',
-          },
-        },
-      }),
-    );
-    await this.conduitDefinitionService.create(
-      ConduitDefinition.of({
-        author: admin,
+        url: 'https://supcon-http.onrender.com/sources/csv/sym-tech.csv',
+      },
+      {
         name: 'Exertus',
-        createdAt: new Date(),
-        source: {
-          formatConfig: { formatType: FormatType.CSV },
-          protocolConfig: {
-            protocolType: ProtocolType.HTTP,
-            url: 'https://supcon-http.onrender.com/sources/csv/exertus.csv',
+        url: 'https://supcon-http.onrender.com/sources/csv/exertus.csv',
+      },
+    ].reduce(async (promise, { name, url }) => {
+      await promise;
+
+      const conduit = await this.conduitDefinitionService.create(
+        ConduitDefinition.of({
+          author,
+          name,
+          createdAt: new Date(),
+          source: {
+            formatConfig: { formatType: FormatType.CSV },
+            protocolConfig: {
+              protocolType: ProtocolType.HTTP,
+              url,
+              timeoutInMs: 10000,
+            },
           },
-        },
-      }),
-    );
+        }),
+      );
+      await this.conduitDefinitionService.buildSchema(conduit.id);
+    }, Promise.resolve());
   }
 
   constructor(

@@ -8,7 +8,11 @@ describe(UserService.name, () => {
   let service: UserService;
 
   let users: Record<string, User>;
-  let repository: { findOneBy: jest.Mock; save: jest.Mock; update: jest.Mock };
+  let repository: {
+    findOneByOrFail: jest.Mock;
+    save: jest.Mock;
+    update: jest.Mock;
+  };
   let encrypt: { encrypt: jest.Mock };
 
   beforeEach(async () => {
@@ -16,7 +20,7 @@ describe(UserService.name, () => {
       A: { id: '1', username: 'A' } as User,
     };
     repository = {
-      findOneBy: jest.fn(),
+      findOneByOrFail: jest.fn(),
       save: jest.fn(),
       update: jest.fn(),
     };
@@ -35,21 +39,21 @@ describe(UserService.name, () => {
   });
 
   it('should find user by username from repository', async () => {
-    repository.findOneBy.mockReturnValue(Promise.resolve(users.A));
+    repository.findOneByOrFail.mockReturnValue(Promise.resolve(users.A));
 
     const user = await service.findOneByUsername('A');
     expect(user).toEqual(users.A);
   });
 
   it('should return null if user is not in repository', async () => {
-    repository.findOneBy.mockReturnValue(null);
+    repository.findOneByOrFail.mockReturnValue(null);
 
     const user = await service.findOneByUsername('A');
     expect(user).toEqual(null);
   });
 
   it('should create a user', async () => {
-    repository.findOneBy.mockImplementation(({ username }) =>
+    repository.findOneByOrFail.mockImplementation(({ username }) =>
       Promise.resolve(
         Object.values(users).find((it) => it.username === username),
       ),
@@ -80,7 +84,7 @@ describe(UserService.name, () => {
   });
 
   it('should update users password', async () => {
-    repository.findOneBy.mockImplementation(({ username }) =>
+    repository.findOneByOrFail.mockImplementation(({ username }) =>
       Promise.resolve(
         Object.values(users).find((it) => it.username === username),
       ),

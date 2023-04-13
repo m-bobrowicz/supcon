@@ -21,13 +21,7 @@ export class UserSeederService {
   }
 
   private async createIfNotExists(userData: UserData) {
-    const isExisting = !!(await this.userService.findOneByUsername(
-      userData.username,
-    ));
-    if (isExisting) {
-      return;
-    }
-    await this.userService.create(this.USERS.ADMIN);
+    await this.userService.create(userData);
   }
 
   constructor(private userService: UserService) {}

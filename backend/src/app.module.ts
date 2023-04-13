@@ -10,11 +10,13 @@ import { AuthHttpFilter } from 'src/auth/auth-http.filter';
 import { loadConfiguration } from 'src/config/config';
 import { UserModule } from 'src/user/user.module';
 import { ConduitDefinitionModule } from 'src/conduit/definition/definition.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 const configuration = loadConfiguration();
 
 @Module({
   imports: [
+    EventEmitterModule.forRoot(),
     ConfigModule.forRoot({ load: [loadConfiguration] }),
     TypeOrmModule.forRoot({
       type: 'postgres',
