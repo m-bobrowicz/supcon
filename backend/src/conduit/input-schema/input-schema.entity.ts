@@ -1,5 +1,12 @@
+import { ConduitDefinition } from 'src/conduit/definition/definition.entity';
 import { InputSchemaNode } from 'src/conduit/input-schema/input-schema-node';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'sc_conduit_input_schema' })
 export class ConduitInputSchema {
@@ -20,4 +27,8 @@ export class ConduitInputSchema {
 
   @Column('jsonb', { nullable: false, default: [] })
   nodes: InputSchemaNode[];
+
+  @OneToOne(() => ConduitDefinition, (e) => e.schema)
+  @JoinColumn()
+  conduitDefinition: ConduitDefinition;
 }

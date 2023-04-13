@@ -1,7 +1,8 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ConduitDefinitionService } from 'src/conduit/definition/definition.service';
 import { ListConduitDefinitionsRequestDTO } from 'src/conduit/definition/list-definitions-request.dto';
+import { InputSchemaService } from 'src/conduit/input-schema/input-schema.service';
 
 @Controller()
 export class ConduitDefinitionController {
@@ -27,5 +28,23 @@ export class ConduitDefinitionController {
     };
   }
 
-  constructor(private conduitDefinitionService: ConduitDefinitionService) {}
+  @UseGuards(JwtAuthGuard)
+  @Get('conduit-definition/:id')
+  async getConduitDefinition(@Param('id') id: string) {
+    const conduitDefinition = await this.conduitDefinitionService.findById(id);
+    return conduitDefinition;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('conduit-definition/:id/schema')
+  async getConduitDefinitionSchema(@Param('id') id: string) {
+    const { schemaId } = await this.conduitDefinitionService.findSchemaById(id);
+    const inputSchema = await this.inputSchemaService.findById(schemaId);
+    return inputSchema;
+  }
+
+  constructor(
+    private conduitDefinitionService: ConduitDefinitionService,
+    private inputSchemaService: InputSchemaService,
+  ) {}
 }

@@ -10,6 +10,10 @@ export class InputSchemaService {
     return schema;
   }
 
+  findById(id: string): Promise<ConduitInputSchema> {
+    return this.repository.findOneByOrFail({ id });
+  }
+
   constructor(
     @InjectRepository(ConduitInputSchema)
     private repository: Repository<ConduitInputSchema>,

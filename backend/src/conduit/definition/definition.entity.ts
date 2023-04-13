@@ -45,7 +45,10 @@ export class ConduitDefinition {
   @Column('jsonb', { nullable: false, default: {} })
   source: ConduitSource;
 
-  @OneToOne(() => ConduitInputSchema)
+  @Column({ nullable: true })
+  schemaId: string;
+
+  @OneToOne(() => ConduitInputSchema, (e) => e.conduitDefinition)
   @JoinColumn()
   schema: ConduitInputSchema;
 }

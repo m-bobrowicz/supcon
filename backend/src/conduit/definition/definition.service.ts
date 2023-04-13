@@ -13,6 +13,17 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ConduitDefinitionService {
+  findById(id: string): Promise<ConduitDefinition> {
+    return this.repository.findOneOrFail({ where: { id } });
+  }
+
+  findSchemaById(id: string): Promise<ConduitDefinition> {
+    return this.repository.findOneOrFail({
+      select: { schemaId: true },
+      where: { id },
+    });
+  }
+
   async create(
     conduitDefinition: ConduitDefinition,
   ): Promise<ConduitDefinition> {
