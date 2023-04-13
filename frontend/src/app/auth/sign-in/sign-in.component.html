@@ -10,22 +10,11 @@
         <input
           type="text"
           scInput
-          [ngClass]="{
-            'border-red-500':
-              formGroup.get('username')?.touched &&
-              formGroup.get('username')?.invalid
-          }"
+          scFormErrorBorder
           formControlName="username"
         />
 
-        <div
-          [ngClass]="{
-            hidden:
-              (formGroup.get('username')?.touched &&
-                formGroup.get('username')?.invalid) == false
-          }"
-          class="text-red-500"
-        >
+        <div [scFormErrorMessage]="formGroup.get('username')">
           Field is required.
         </div>
       </label>
@@ -34,21 +23,10 @@
         <input
           type="password"
           scInput
-          [ngClass]="{
-            'border-red-500':
-              formGroup.get('password')?.touched &&
-              formGroup.get('password')?.invalid
-          }"
+          scFormErrorBorder
           formControlName="password"
         />
-        <div
-          [ngClass]="{
-            hidden:
-              (formGroup.get('password')?.touched &&
-                formGroup.get('password')?.invalid) == false
-          }"
-          class="text-red-500"
-        >
+        <div [scFormErrorMessage]="formGroup.get('password')">
           Field is required.
         </div>
       </label>
@@ -56,8 +34,8 @@
         <button type="submit" scButtonPrimary class="self-end">sign in</button>
       </div>
       <div
-        [ngClass]="{ hidden: !(formGroup.errors?.['wrongCredentials'] === true) }"
-        class="text-red-500"
+        [scFormErrorMessage]="formGroup.get('password')"
+        scFormErrorMessageCheckFor="wrongCredentials"
       >
         Wrong credentials.
       </div>
