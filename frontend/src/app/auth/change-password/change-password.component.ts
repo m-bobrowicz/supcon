@@ -1,20 +1,31 @@
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, switchMap, tap } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+
+
+const checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => { 
+  let pass = group.get('newPassword')?.value;
+  let confirmPass = group.get('repeatPassword')?.value;
+
+  return pass === confirmPass ? null : { notSame: true }
+}
 
 @Component({
   selector: 'sc-auth-change-password',
   templateUrl: './change-password.component.html',
 })
+
 export class ChangePasswordComponent {
+
+  
   formGroup = this.fb.group({
     currentPassword: ['', Validators.required],
     newPassword: ['', Validators.required],
     repeatPassword: ['', Validators.required],
-  });
+  }, { validators: checkPasswords });
 
   submit() {
     this.resetForm();
