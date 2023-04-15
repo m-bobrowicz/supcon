@@ -4,6 +4,7 @@
 @tailwind utilities;
 
 @import "@fontsource/inter";
+@import '@angular/cdk/overlay-prebuilt.css';
 
 @layer components {
   .sc-input {
