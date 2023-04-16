@@ -4,5 +4,5 @@ import { Directive, HostBinding } from '@angular/core';
 export class MenuDirective {
   @HostBinding('class')
   readonly elementClass =
-    'flex flex-col inline-flex mt-2';
+    'flex flex-col inline-flex overflow-hidden rounded-lg mt-2 shadow-md shadow-zinc-800 bg-zinc-700 ';
 }
