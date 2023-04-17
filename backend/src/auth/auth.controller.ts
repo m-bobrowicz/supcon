@@ -8,7 +8,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthService, IncorrectPasswordError } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 import { UserService } from 'src/user/user.service';
@@ -63,22 +63,33 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) response: Response,
   ) {
-    await this.authService.changePassword({
-      currentPassword: req.body.currentPassword,
-      newPassword: req.body.newPassword,
-      username: req.body.username,
-    });
-    response
-      .clearCookie('token', {
-        httpOnly: true,
-        path: '/',
-        sameSite: 'none',
-        secure: true,
-      })
-      .json({
-        statusCode: HttpStatus.NO_CONTENT,
-        timestamp: new Date().toISOString(),
+    try {
+      await this.authService.changePassword({
+        currentPassword: req.body.currentPassword,
+        newPassword: req.body.newPassword,
+        username: req.body.username,
       });
+      response
+        .clearCookie('token', {
+          httpOnly: true,
+          path: '/',
+          sameSite: 'none',
+          secure: true,
+        })
+        .json({
+          statusCode: HttpStatus.NO_CONTENT,
+          timestamp: new Date().toISOString(),
+        });
+    } catch (error) {
+      if (error instanceof IncorrectPasswordError) {
+        response.json({
+          statusCode: HttpStatus.UNAUTHORIZED,
+          timestamp: new Date().toISOString(),
+        });
+        return;
+      }
+      throw error;
+    }
   }
 
   constructor(
