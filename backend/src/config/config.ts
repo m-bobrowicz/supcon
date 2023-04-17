@@ -1,10 +1,13 @@
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, readdirSync, existsSync } from 'fs';
 import * as yaml from 'js-yaml';
 import { resolve } from 'path';
 
 const YAML_CONFIG_FILENAMES = ['config.yml', 'config/config.yml'];
 
 export const loadConfiguration = () => {
+  readdirSync(__filename).forEach((file) => {
+    console.log(file);
+  });
   const location = YAML_CONFIG_FILENAMES.find((it) => {
     const filePath = resolve(it);
     console.log(`checking for ${filePath}...`);
