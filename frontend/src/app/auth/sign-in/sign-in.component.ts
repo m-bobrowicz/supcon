@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
@@ -16,7 +16,7 @@ export class SignInComponent {
   });
 
   submit() {
-    this.resetForm();
+    this.formGroup.setErrors(null);
     this.formGroup.markAllAsTouched();
 
     if (this.formGroup.invalid) {
@@ -38,20 +38,15 @@ export class SignInComponent {
             error instanceof HttpErrorResponse &&
             error.status === HttpStatusCode.Unauthorized
           ) {
-            this.formGroup.setErrors({ wrongCredentials: true });
+            this.formGroup.setErrors(
+              { wrongCredentials: true },
+              { emitEvent: true }
+            );
           }
           throw error;
         })
       )
       .subscribe();
-  }
-
-  ngOnInit() {
-    this.resetForm();
-  }
-
-  resetForm() {
-    this.formGroup.setErrors(null);
   }
 
   constructor(
