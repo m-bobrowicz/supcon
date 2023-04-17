@@ -14,5 +14,9 @@ export class ConduitDefinitionService {
     return this.http.get<InputSchema>(`/api/conduit-definition/${id}/schema`);
   }
 
+  refreshSchema(id: string) {
+    return this.http.post(`/api/conduit-definition/${id}/schema-refresh`, {});
+  }
+
   constructor(private http: HttpClient) {}
 }

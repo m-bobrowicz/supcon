@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpStatus,
+  Param,
+  Post,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
+import { Response, response } from 'express';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ConduitDefinitionService } from 'src/conduit/definition/definition.service';
 import { ListConduitDefinitionsRequestDTO } from 'src/conduit/definition/list-definitions-request.dto';
@@ -41,6 +51,19 @@ export class ConduitDefinitionController {
     const { schemaId } = await this.conduitDefinitionService.findSchemaById(id);
     const inputSchema = await this.inputSchemaService.findById(schemaId);
     return inputSchema;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('conduit-definition/:id/schema-refresh')
+  async refreshConduitDefinitionSchema(
+    @Param('id') id: string,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    await this.conduitDefinitionService.buildSchema(id);
+    response.json({
+      statusCode: HttpStatus.NO_CONTENT,
+      timestamp: new Date().toISOString(),
+    });
   }
 
   constructor(
