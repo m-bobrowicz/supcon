@@ -1,16 +1,18 @@
 import 'tsconfig-paths/register';
 import { ValidationPipe } from '@nestjs/common';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import NodeEnvironment from 'jest-environment-node';
 import { SeederModule } from 'dev/seeder/seeder.module';
-import { ConduitDefinition } from 'src/conduit/definition/definition.entity';
-import { User } from 'src/user/user.entity';
+import { SeederService } from 'dev/seeder/seeder.service';
+import NodeEnvironment from 'jest-environment-node';
+import { ConduitDefinitionModule } from 'src/conduit/definition/definition.module';
+import { ConduitInputSchemaModule } from 'src/conduit/input-schema/input-schema.module';
+import { UserModule } from 'src/user/user.module';
 import {
   PostgreSqlContainer,
   StartedPostgreSqlContainer,
 } from 'testcontainers';
-import { SeederService } from 'dev/seeder/seeder.service';
 
 export default class TestEnvironment extends NodeEnvironment {
   container: StartedPostgreSqlContainer;
@@ -37,11 +39,15 @@ export default class TestEnvironment extends NodeEnvironment {
           username: containerConfig.username,
           password: containerConfig.password,
           database: containerConfig.database,
-          entities: [ConduitDefinition, User],
+          autoLoadEntities: true,
           synchronize: true,
           dropSchema: false,
         }),
+        EventEmitterModule.forRoot(),
         SeederModule,
+        ConduitInputSchemaModule,
+        ConduitDefinitionModule,
+        UserModule,
       ],
     }).compile();
     const app = moduleFixture.createNestApplication();

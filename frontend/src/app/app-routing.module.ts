@@ -26,6 +26,13 @@ import { ChangePasswordModule } from './auth/change-password/change-password.mod
                 'src/app/conduit-definition-list/conduit-definition-list.router-module'
               ).then((m) => m.ConduitDefinitionListRouterModule),
           },
+          {
+            path: 'conduit-definition/:id',
+            loadChildren: () =>
+              import(
+                'src/app/conduit-definition-edit/conduit-definition-edit.router-module'
+              ).then((m) => m.ConduitDefinitionEditRouterModule),
+          },
         ],
         canActivate: [AuthGuard],
       },
@@ -51,7 +58,7 @@ import { ChangePasswordModule } from './auth/change-password/change-password.mod
     ]),
     LayoutModule,
     UserProfileModule,
-    ChangePasswordModule
+    ChangePasswordModule,
   ],
   exports: [RouterModule],
 })

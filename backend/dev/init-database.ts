@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { loadConfiguration } from 'src/config/config';
 import { SeederModule } from 'dev/seeder/seeder.module';
 import { SeederService } from 'dev/seeder/seeder.service';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 const configuration = loadConfiguration();
 
@@ -20,6 +21,7 @@ const configuration = loadConfiguration();
       synchronize: true,
       dropSchema: true,
     }),
+    EventEmitterModule.forRoot(),
     SeederModule,
   ],
 })

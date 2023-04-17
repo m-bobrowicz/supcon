@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ConduitDefinitionListStore } from 'src/app/conduit-definition-list/conduit-definition-list-store.service';
-import { ConduitDefiniton } from 'src/app/conduit-definition/conduit-definition';
 
 @Component({
   selector: 'sc-conduit-definition-list',
@@ -9,7 +8,7 @@ import { ConduitDefiniton } from 'src/app/conduit-definition/conduit-definition'
   providers: [ConduitDefinitionListStore],
 })
 export class ConduitDefinitionListComponent {
-  readonly displayedColumns = ['name', 'createdAt'];
+  readonly displayedColumns = ['name', 'createdAt', 'actions'];
   dataSource = this.store.items$;
 
   ngOnInit() {

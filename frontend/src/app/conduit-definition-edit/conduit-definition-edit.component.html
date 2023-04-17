@@ -1,0 +1,60 @@
+<div class="p-8 grid grid-flow-row gap-4">
+  <label class="grid grid-flow-row gap-2">
+    Conduit name
+    <input
+      type="text"
+      disabled
+      scInput
+      class="w-[320px]"
+      [value]="(conduitDefinition$ | async)?.name"
+    />
+  </label>
+
+  <label class="grid grid-flow-row gap-2">
+    Input schema
+
+    <button
+      type="button"
+      scButtonLink
+      class="inline-grid grid-flow-col gap-2 justify-start items-center"
+      (click)="refreshInputSchema()"
+    >
+      <i-feather
+        name="refresh-ccw"
+        class="!w-3 !h-3"
+        [class.animate-spin]="isReloadingInputSchema$ | async"
+      ></i-feather>
+      Refresh
+    </button>
+
+    <cdk-tree
+      [dataSource]="(inputSchema$ | async)?.nodes ?? []"
+      [treeControl]="treeControl"
+    >
+      <!-- This is the tree node template for leaf nodes -->
+      <cdk-nested-tree-node *cdkTreeNodeDef="let node" class="block">
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <button mat-icon-button disabled></button>
+        {{ node.name }}
+      </cdk-nested-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <cdk-nested-tree-node
+        *cdkTreeNodeDef="let node; when: hasChild"
+        class="block"
+      >
+        <button mat-icon-button cdkTreeNodeToggle>
+          <i-feather
+            [name]="
+              treeControl.isExpanded(node) ? 'chevron_right' : 'chevron_down'
+            "
+            class="w-2 h-2"
+          ></i-feather>
+        </button>
+        {{ node.name }}
+        <div [class.hidden]="!treeControl.isExpanded(node)">
+          <ng-container cdkTreeNodeOutlet></ng-container>
+        </div>
+      </cdk-nested-tree-node>
+    </cdk-tree>
+  </label>
+</div>
