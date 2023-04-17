@@ -6,8 +6,8 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
-  findOneByUsername(username: string): Promise<User | null> {
-    return this.userRepository.findOneBy({ username });
+  findOneByUsername(username: string): Promise<User> {
+    return this.userRepository.findOneByOrFail({ username });
   }
 
   async create(data: {

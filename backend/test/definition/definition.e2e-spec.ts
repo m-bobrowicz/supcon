@@ -1,10 +1,12 @@
+import { HttpModule } from '@nestjs/axios';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { ConduitDefinition } from 'src/conduit/definition/definition.entity';
 import { ConduitDefinitionModule } from 'src/conduit/definition/definition.module';
-import { User } from 'src/user/user.entity';
+import { ConduitInputSchemaModule } from 'src/conduit/input-schema/input-schema.module';
+import { UserModule } from 'src/user/user.module';
 import * as request from 'supertest';
 
 describe('ConduitDefinitionController', () => {
@@ -14,6 +16,11 @@ describe('ConduitDefinitionController', () => {
     const container = (globalThis as any).container;
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [
+        EventEmitterModule.forRoot(),
+        ConduitInputSchemaModule,
+        ConduitDefinitionModule,
+        UserModule,
+        HttpModule,
         TypeOrmModule.forRoot({
           type: 'postgres',
           host: container.host,
@@ -21,17 +28,14 @@ describe('ConduitDefinitionController', () => {
           username: container.username,
           password: container.password,
           database: container.database,
-          entities: [ConduitDefinition, User],
+          autoLoadEntities: true,
           synchronize: false,
           dropSchema: false,
         }),
-        ConduitDefinitionModule,
       ],
     })
       .overrideGuard(JwtAuthGuard)
-      .useValue({
-        canActivate: () => true,
-      })
+      .useValue({ canActivate: () => true })
       .compile();
 
     app = moduleFixture.createNestApplication();

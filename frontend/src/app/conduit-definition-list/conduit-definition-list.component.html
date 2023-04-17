@@ -13,6 +13,18 @@
         </td>
       </ng-container>
 
+      <ng-container cdkColumnDef="actions">
+        <th cdk-header-cell scHeaderCell *cdkHeaderCellDef></th>
+        <td cdk-cell scCell *cdkCellDef="let element">
+          <a
+            [routerLink]="'/app/conduit-definition/' + element.id"
+            scButtonLink
+          >
+            View
+          </a>
+        </td>
+      </ng-container>
+
       <tr
         cdk-header-row
         scHeaderRow
