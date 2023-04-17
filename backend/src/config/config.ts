@@ -5,7 +5,7 @@ import { resolve } from 'path';
 const YAML_CONFIG_FILENAMES = ['config.yml', 'config/config.yml'];
 
 export const loadConfiguration = () => {
-  readdirSync(__filename).forEach((file) => {
+  readdirSync(process.cwd()).forEach((file) => {
     console.log(file);
   });
   const location = YAML_CONFIG_FILENAMES.find((it) => {
