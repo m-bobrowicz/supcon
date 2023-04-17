@@ -1,17 +1,14 @@
-import { readFileSync, readdirSync, existsSync } from 'fs';
-import { join } from 'path';
+import { existsSync, readFileSync } from 'fs';
 import * as yaml from 'js-yaml';
 import { resolve } from 'path';
 
-const YAML_CONFIG_FILENAMES = ['config.yml', 'config/config.yml'];
+const YAML_CONFIG_FILENAMES = [
+  '/etc/secrets/config.yml',
+  'config.yml',
+  'config/config.yml',
+];
 
 export const loadConfiguration = () => {
-  readdirSync(process.cwd()).forEach((file) => {
-    console.log('current dir: ', file);
-  });
-  readdirSync(join(process.cwd(), '..')).forEach((file) => {
-    console.log('parent dir: ', file);
-  });
   const location = YAML_CONFIG_FILENAMES.find((it) => {
     const filePath = resolve(it);
     console.log(`checking for ${filePath}...`);
