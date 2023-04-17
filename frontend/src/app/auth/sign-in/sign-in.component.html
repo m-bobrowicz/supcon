@@ -10,8 +10,8 @@
         <input
           type="text"
           scInput
-          scFormErrorBorder
           formControlName="username"
+          scFormErrorBorder
         />
 
         <div [scFormErrorMessage]="formGroup.get('username')">
@@ -23,8 +23,8 @@
         <input
           type="password"
           scInput
-          scFormErrorBorder
           formControlName="password"
+          scFormErrorBorder
         />
         <div [scFormErrorMessage]="formGroup.get('password')">
           Field is required.
@@ -34,7 +34,7 @@
         <button type="submit" scButtonPrimary class="self-end">sign in</button>
       </div>
       <div
-        [scFormErrorMessage]="formGroup.get('password')"
+        [scFormErrorMessage]="formGroup"
         scFormErrorMessageCheckFor="wrongCredentials"
       >
         Wrong credentials.
