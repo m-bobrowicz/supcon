@@ -2,7 +2,11 @@ import { readFileSync, existsSync } from 'fs';
 import * as yaml from 'js-yaml';
 import { resolve } from 'path';
 
-const YAML_CONFIG_FILENAMES = ['config.yml', 'config/config.yml'];
+const YAML_CONFIG_FILENAMES = [
+  '/etc/secrets/config.yml',
+  'config.yml',
+  'config/config.yml',
+];
 
 export const loadConfiguration = () => {
   const location = YAML_CONFIG_FILENAMES.find((it) => {
