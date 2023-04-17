@@ -5,7 +5,15 @@ import { resolve } from 'path';
 const YAML_CONFIG_FILENAMES = ['config.yml', 'config/config.yml'];
 
 export const loadConfiguration = () => {
-  const location = YAML_CONFIG_FILENAMES.find((it) => existsSync(resolve(it)));
+  const location = YAML_CONFIG_FILENAMES.find((it) => {
+    const filePath = resolve(it);
+    console.log(`checking for ${filePath}...`);
+    const isExisting = existsSync(filePath);
+    console.log(
+      isExisting ? `${filePath} exists` : `${filePath} does not exist`,
+    );
+    return isExisting;
+  });
 
   if (location == null) {
     throw new Error(
